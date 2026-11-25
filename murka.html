@@ -53,8 +53,9 @@ nav.top .nav-links .btn{background:#fff;color:var(--ink);border-color:#fff}
 nav.top .burger{color:#fff}
 
 /* hero */
-.hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(1200px 700px at 78% -6%,#1a4d5e 0%,#0c1a24 58%),linear-gradient(160deg,#0c1a24,#123644)}
-.hero::before{content:'';position:absolute;inset:0;opacity:.56;background:radial-gradient(520px 520px at 80% 26%,rgba(24,183,201,.35),transparent 60%),radial-gradient(360px 360px at 62% 70%,rgba(24,183,201,.16),transparent 62%)}
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;background:#0c1a24}
+.hero-photo{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 52%}
+.hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(12,26,36,.98) 0%,rgba(12,26,36,.9) 38%,rgba(12,26,36,.56) 70%,rgba(12,26,36,.38) 100%),linear-gradient(180deg,rgba(12,26,36,.12),rgba(12,26,36,.52))}
 .blob{position:absolute;border-radius:50%;opacity:.52;animation:float 9s ease-in-out infinite}
 .blob b{display:block;width:100%;height:100%;border-radius:50%;border:1px solid rgba(215,242,245,.5)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
@@ -66,13 +67,6 @@ nav.top .burger{color:#fff}
 .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
 .hero .btn.ghost{color:#fff;border-color:rgba(215,242,245,.4)}
 .hero .btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
-.hero-paw{position:absolute;z-index:2;right:8%;top:50%;transform:translateY(-50%);width:min(31vw,390px);aspect-ratio:1;opacity:.14}
-.hero-paw .pad{position:absolute;background:#7fe0ea;border-radius:50%}
-.hero-paw .main{width:51%;height:45%;left:25%;top:42%;border-radius:48% 48% 44% 44%;transform:rotate(-4deg)}
-.hero-paw .toe:nth-child(2){width:21%;height:25%;left:9%;top:26%;transform:rotate(-28deg)}
-.hero-paw .toe:nth-child(3){width:21%;height:27%;left:31%;top:8%;transform:rotate(-9deg)}
-.hero-paw .toe:nth-child(4){width:21%;height:27%;left:57%;top:10%;transform:rotate(10deg)}
-.hero-paw .toe:nth-child(5){width:21%;height:25%;right:4%;top:30%;transform:rotate(30deg)}
 .hero-meta{position:absolute;bottom:35px;left:0;right:0;z-index:3}
 .hero-meta .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;border-top:1px solid rgba(215,242,245,.16);padding-top:23px}
 .hero-meta .m b{font-size:18px;font-weight:800;color:#fff;display:block;line-height:1.2}
@@ -87,18 +81,14 @@ section{padding:clamp(72px,10vw,138px) 0}
 .sec-head p{color:var(--steel);margin-top:18px;font-size:clamp(16px,1.45vw,17px)}
 
 /* about */
-.about{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(35px,6vw,78px);align-items:center}
+.about{max-width:1080px}
 .about h2{font-size:clamp(32px,4vw,44px);font-weight:600;line-height:1.14;letter-spacing:-.02em;margin-bottom:22px}
 .about h2 span{color:var(--air-dk)}
-.about p{color:var(--steel);margin-bottom:16px}
-.badges{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:30px}
+.about>p{color:var(--steel);margin-bottom:16px;max-width:800px}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:34px}
 .badge{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
 .badge b{display:block;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
 .badge span{font-size:13.5px;color:var(--mist)}
-.clinic-visual{position:relative;aspect-ratio:16/10;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:var(--deep)}
-.clinic-visual::after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(12,26,36,.76));pointer-events:none}
-.clinic-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 48%}
-.clinic-visual .caption{position:absolute;z-index:1;left:28px;right:28px;bottom:24px;color:#eaf6f8;font-size:11px;letter-spacing:.13em;text-transform:uppercase;text-align:center}
 
 /* services */
 .services{background:#fff}
@@ -110,6 +100,17 @@ section{padding:clamp(72px,10vw,138px) 0}
 .serv h3{font-size:22px;font-weight:600;line-height:1.25;margin-bottom:11px}
 .serv p{color:var(--steel);font-size:15.5px;line-height:1.65}
 .service-note{margin-top:24px;color:var(--mist);font-size:13px}
+
+/* patient gallery */
+.patients{background:var(--sky)}
+.patient-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.patient-card{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:22px;background:var(--deep);box-shadow:var(--shadow-sm)}
+.patient-card::after{content:'';position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(12,26,36,.82));pointer-events:none}
+.patient-card img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .55s ease}
+.patient-card:hover img{transform:scale(1.035)}
+.patient-card figcaption{position:absolute;z-index:1;left:22px;right:22px;bottom:18px;color:#fff}
+.patient-card figcaption span{display:block;color:#8de5ee;font-size:10px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;margin-bottom:3px}
+.patient-card figcaption b{font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.25}
 
 /* calculator */
 .calc-sec{background:linear-gradient(180deg,#0c1a24,#10303f);color:var(--paper)}
@@ -207,13 +208,13 @@ footer .cr{font-size:12.5px;color:#5c7783}
 @media(max-width:980px){
   .nav-links{display:none;position:absolute;top:100%;left:20px;right:20px;flex-direction:column;align-items:stretch;gap:0;padding:14px;background:rgba(243,248,250,.98);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm)}
   .nav-links.open{display:flex}.nav-links a,nav.top .nav-links a{color:var(--steel);padding:11px 12px}.nav-links .btn,nav.top .nav-links .btn{margin-top:7px;color:#fff;background:var(--air);border-color:var(--air)}
-  .burger{display:flex}.hero-paw{right:-8%;width:42vw}
-  .serv-grid{grid-template-columns:1fr 1fr}.benefit-grid,.proc-grid{grid-template-columns:1fr 1fr}.calculator{grid-template-columns:1fr}
+  .burger{display:flex}
+  .badges{grid-template-columns:1fr 1fr}.serv-grid{grid-template-columns:1fr 1fr}.patient-grid{grid-template-columns:1fr 1fr}.benefit-grid,.proc-grid{grid-template-columns:1fr 1fr}.calculator{grid-template-columns:1fr}
 }
-@media(max-width:860px){.about,.contact{grid-template-columns:1fr}.about .visual-col{order:-1}.clinic-visual{aspect-ratio:16/10}.rev-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.contact{grid-template-columns:1fr}.rev-grid{grid-template-columns:1fr}}
 @media(max-width:640px){
-  .wrap{width:min(100% - 32px,1200px)}nav,nav.solid{padding:14px 18px}.logo{font-size:18px}.hero{min-height:760px}.hero-inner{padding:110px 0 90px}.hero-paw{width:76vw;right:-30%;top:34%}.hero-meta{display:none}.hero p{font-size:16px}.hero .cta-row{align-items:stretch}.hero .btn{width:100%}
-  .badges,.serv-grid,.benefit-grid,.proc-grid,.checks{grid-template-columns:1fr}.clinic-visual{aspect-ratio:16/10}.serv{padding:29px 23px}.calc-panel,.calc-result{padding:25px 20px}.calc-label{align-items:flex-start;flex-direction:column;gap:2px}.chip span{font-size:12px;padding:9px 13px}.total{font-size:44px}.strip .wrap{border-radius:22px}.demo-tag{position:static;display:block;width:max-content;max-width:calc(100% - 20px);margin:16px auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+  .wrap{width:min(100% - 32px,1200px)}nav,nav.solid{padding:14px 18px}.logo{font-size:18px}.hero{min-height:760px}.hero-photo{object-position:64% center}.hero::before{background:linear-gradient(180deg,rgba(12,26,36,.68),rgba(12,26,36,.78) 48%,rgba(12,26,36,.92))}.hero-inner{padding:110px 0 90px}.hero-meta{display:none}.hero p{font-size:16px}.hero .cta-row{align-items:stretch}.hero .btn{width:100%}
+  .badges,.serv-grid,.patient-grid,.benefit-grid,.proc-grid,.checks{grid-template-columns:1fr}.patient-card{border-radius:18px}.serv{padding:29px 23px}.calc-panel,.calc-result{padding:25px 20px}.calc-label{align-items:flex-start;flex-direction:column;gap:2px}.chip span{font-size:12px;padding:9px 13px}.total{font-size:44px}.strip .wrap{border-radius:22px}.demo-tag{position:static;display:block;width:max-content;max-width:calc(100% - 20px);margin:16px auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.blob{animation:none}.btn,.serv{transition:none}}
 </style>
@@ -225,6 +226,7 @@ footer .cr{font-size:12.5px;color:#5c7783}
   <div class="nav-links" id="navLinks">
     <a href="#about">О клинике</a>
     <a href="#services">Услуги</a>
+    <a href="#patients">Пациенты</a>
     <a href="#calculator">Калькулятор</a>
     <a href="#process">Как записаться</a>
     <a href="#contact" class="btn">Записаться на приём</a>
@@ -233,10 +235,10 @@ footer .cr{font-size:12.5px;color:#5c7783}
 </nav>
 
 <header class="hero" id="top">
+  <img class="hero-photo" src="assets/murka-hero-cat-dog.webp" alt="Кот и белый шпиц на приёме в ветеринарной клинике Мурка" width="1600" height="900" fetchpriority="high">
   <div class="blob" style="width:220px;height:220px;top:16%;right:12%"><b></b></div>
   <div class="blob" style="width:120px;height:120px;top:54%;right:30%;animation-delay:1.5s"><b></b></div>
   <div class="blob" style="width:70px;height:70px;top:34%;right:44%;animation-delay:.8s"><b></b></div>
-  <div class="hero-paw" aria-hidden="true"><i class="pad main"></i><i class="pad toe"></i><i class="pad toe"></i><i class="pad toe"></i><i class="pad toe"></i></div>
   <div class="wrap hero-inner">
     <div class="eyebrow rv">Ветеринарная клиника · кошки · собаки</div>
     <h1 class="rv">Здоровье питомца —<br><span>спокойно и рядом</span></h1>
@@ -259,23 +261,15 @@ footer .cr{font-size:12.5px;color:#5c7783}
 <main>
 <section id="about">
   <div class="wrap about">
-    <div>
-      <div class="eyebrow rv">О клинике</div>
-      <h2 class="rv">Лечение начинается <span>с доверия</span></h2>
-      <p class="rv">В «Мурке» питомца не торопят и не превращают визит в испытание. Врач собирает историю, проводит осмотр и обсуждает с Вами варианты — что нужно сделать сейчас, а что можно запланировать.</p>
-      <p class="rv">Эта страница — демо-концепция. Реальный состав команды, оборудование, режим работы и документы клиники будут добавлены после уточнения данных.</p>
-      <div class="badges rv">
-        <div class="badge"><b>Осмотр без спешки</b><span>даём питомцу освоиться и спокойно начать приём</span></div>
-        <div class="badge"><b>План на руках</b><span>назначения и следующие шаги — в понятном виде</span></div>
-        <div class="badge"><b>Согласование заранее</b><span>обсуждаем процедуры и стоимость до начала</span></div>
-        <div class="badge"><b>Забота после визита</b><span>напоминаем о повторном приёме и профилактике</span></div>
-      </div>
-    </div>
-    <div class="visual-col rv">
-      <div class="clinic-visual">
-        <img src="assets/murka-pets.webp" alt="Кот и белая собака лежат рядом" width="1600" height="828">
-        <div class="caption">забота о кошках и собаках</div>
-      </div>
+    <div class="eyebrow rv">О клинике</div>
+    <h2 class="rv">Лечение начинается <span>с доверия</span></h2>
+    <p class="rv">В «Мурке» питомца не торопят и не превращают визит в испытание. Врач собирает историю, проводит осмотр и обсуждает с Вами варианты — что нужно сделать сейчас, а что можно запланировать.</p>
+    <p class="rv">Эта страница — демо-концепция. Реальный состав команды, оборудование, режим работы и документы клиники будут добавлены после уточнения данных.</p>
+    <div class="badges rv">
+      <div class="badge"><b>Осмотр без спешки</b><span>даём питомцу освоиться и спокойно начать приём</span></div>
+      <div class="badge"><b>План на руках</b><span>назначения и следующие шаги — в понятном виде</span></div>
+      <div class="badge"><b>Согласование заранее</b><span>обсуждаем процедуры и стоимость до начала</span></div>
+      <div class="badge"><b>Забота после визита</b><span>напоминаем о повторном приёме и профилактике</span></div>
     </div>
   </div>
 </section>
@@ -296,6 +290,23 @@ footer .cr{font-size:12.5px;color:#5c7783}
       <article class="serv rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19c2-5 5-7 8-7s6 2 8 7M8 8a4 4 0 1 1 8 0"/></svg></div><h3>Наблюдение</h3><p>Повторные осмотры и сопровождение питомцев с хроническими состояниями.</p></article>
     </div>
     <p class="service-note rv">Демо-состав услуг: перед публикацией сверим его с реальным прайсом и оснащением клиники.</p>
+  </div>
+</section>
+
+<section class="patients" id="patients">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">Наши пациенты</div>
+      <h2 class="rv">Забота для каждого <span>характера и возраста</span></h2>
+      <p class="rv">Спокойная обстановка помогает питомцу освоиться, а врачу — провести осмотр бережно и внимательно.</p>
+    </div>
+    <div class="patient-grid">
+      <figure class="patient-card rv"><img src="assets/murka-patient-cat.webp" alt="Серый кот на осмотре в ветеринарной клинике Мурка" width="960" height="720" loading="lazy"><figcaption><span>Кошки</span><b>Знакомство без спешки</b></figcaption></figure>
+      <figure class="patient-card rv"><img src="assets/murka-patient-cat-budgie.webp" alt="Кот и волнистый попугай на приёме в ветеринарной клинике" width="960" height="720" loading="lazy"><figcaption><span>Разные питомцы</span><b>Внимание к каждому</b></figcaption></figure>
+      <figure class="patient-card rv"><img src="assets/murka-patient-puppy.webp" alt="Щенок белого шпица на мягкой лежанке после ветеринарного осмотра" width="960" height="720" loading="lazy"><figcaption><span>Щенки</span><b>Мягкая адаптация</b></figcaption></figure>
+      <figure class="patient-card rv"><img src="assets/murka-patient-spitz.webp" alt="Белый шпиц на профилактическом осмотре у ветеринара" width="960" height="720" loading="lazy"><figcaption><span>Профилактика</span><b>Здоровье по плану</b></figcaption></figure>
+      <figure class="patient-card rv"><img src="assets/murka-patient-longhair-cat.webp" alt="Серый длинношёрстный кот на приёме в клинике Мурка" width="960" height="720" loading="lazy"><figcaption><span>Наблюдение</span><b>Забота рядом</b></figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -431,7 +442,7 @@ footer .cr{font-size:12.5px;color:#5c7783}
 <footer>
   <div class="wrap">
     <a href="#top" class="logo"><span class="dot"></span>МУРКА</a>
-    <div class="fnav"><a href="#about">О клинике</a><a href="#services">Услуги</a><a href="#calculator">Калькулятор</a><a href="#process">Как записаться</a><a href="#contact">Контакты</a></div>
+    <div class="fnav"><a href="#about">О клинике</a><a href="#services">Услуги</a><a href="#patients">Пациенты</a><a href="#calculator">Калькулятор</a><a href="#process">Как записаться</a><a href="#contact">Контакты</a></div>
     <div class="cr">© 2026 «Мурка» · Демо-концепция ветеринарной клиники · реквизиты и документы добавит владелец</div>
   </div>
 </footer>
